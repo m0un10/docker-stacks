@@ -50,12 +50,11 @@ Fixed stacks are not designed to be fungible. They contain a bind mount which st
 
 Unfortunately some applications just aren't built for containers. But why not try?
 
-Stacks which are categorised as complex general have one or more of the following traits.
+Stacks which are categorised as complex generally have one or more of the following traits:
 
 1. They have images that need to be built first or require login to a private repository of a third party vendor
-2. They take a very long time to startup due to configuration on first-boot
-3. They require a specific startup order at boot-time
-4. They are not always tolerant to containers being rebooted or destroyed
+2. They require a specific startup order at boot-time
+3. They are not always tolerant to containers being rebooted or destroyed
 
 The constraints are due to the applications themselves and not docker. To see which constraints apply to complex stack check their `README.md` file.
 
