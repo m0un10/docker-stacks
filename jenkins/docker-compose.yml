@@ -1,0 +1,12 @@
+version: '2.1'
+services:
+  app:
+    image: jenkins/jenkins
+    ports:
+      - 8080
+    volumes:
+      - state:/var/jenkins_home
+    healthcheck:
+      test: "curl --silent --fail localhost:8080/login || exit 1"
+volumes:
+  state:

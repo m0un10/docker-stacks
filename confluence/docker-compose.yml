@@ -1,7 +1,11 @@
-app:
-  image: atlassian/confluence-server
-  ports:
-    - 8090
-    - 8091
-  volumes:
-    - ./state:/var/atlassian/application-data/confluence
+version: '2.1'
+services:
+  app:
+    image: atlassian/confluence-server
+    ports:
+      - 8090:8090
+      - 8091:8091
+    volumes:
+      - ./state:/var/atlassian/application-data/confluence
+    healthcheck:
+      test: "curl --silent --fail localhost:8090 || exit 1"

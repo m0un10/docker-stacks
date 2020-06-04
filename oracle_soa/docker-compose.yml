@@ -1,0 +1,39 @@
+version: '2.3'
+
+services:
+  db:
+    image: container-registry.oracle.com/database/enterprise:12.2.0.1
+    ports:
+      - 1521:1521
+    shm_size: 8g
+    environment:
+      - DB_SID=soadb
+      - DB_PDB=soapdb
+      - DB_BUNDLE=basic
+      - DB_DOMAIN=us.oracle.com
+    healthcheck:
+      test: "echo 'SELECT 1 FROM DUAL;' | /u01/app/oracle/product/12.2.0/dbhome_1/bin/sqlplus sys/Oradoc_db1 AS SYSDBA || exit 1"
+      interval: 1m
+      retries: 10
+      start_period: 90s
+  domain:
+    image: container-registry.oracle.com/middleware/soasuite:12.2.1.3-200418
+    ports:
+      - 7001:7001
+      - 7002:7002
+    environment:
+      - CONNECTION_STRING=db:1521/soapdb.us.oracle.com
+      - RCUPREFIX=SOA1
+      - DB_PASSWORD=Oradoc_db1
+      - DB_SCHEMA_PASSWORD=Welcome1
+      - ADMIN_PASSWORD=Welcome1
+      - DOMAIN_NAME=dev_soainfra
+      - DOMAIN_TYPE=soa
+      - ADMIN_HOST=localhost
+    healthcheck:
+      test: "curl --silent --fail localhost:7001/console || exit 1"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./state:/u01/oracle/user_projects
