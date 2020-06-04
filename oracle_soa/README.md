@@ -1,4 +1,4 @@
-# Docker stack for Oracle FMW
+# Docker stack for Oracle SOA
 
 ## Downloading the Docker images
 
