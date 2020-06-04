@@ -16,6 +16,10 @@ docker pull container-registry.oracle.com/middleware/soasuite:12.2.1.3-200418
 docker pull container-registry.oracle.com/database/enterprise:12.2.0.1
 ```
 
+## Constraints
+
+Due to the way WebLogic stores the real IP addresses rather than the hostname for binding, it is not advisable to destroy containers or make changes that would result in a change to the container IP. In this case, you may not be able to start your container anymore and the only way to fix this is to delete the `state` directory so that it recreates the domain again to honour the new IP address. This is really stupid but it's a limitation (at the time of writing) for the official WebLogic container image bootstrapping process not Docker itself.
+
 ## Starting the stack
 
 ```
