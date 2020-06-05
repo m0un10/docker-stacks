@@ -74,11 +74,17 @@ Make sure you have enough memory assigned to your docker engine. By default Dock
 docker inspect --format "{{json .State.Health }}"  oracle_soa_db_1
 ```
 
-### WebLogic domain is failing to boot due to a database issue
+### WebLogic domain is failing to boot
 
-Try starting the database before the domain
+If you suspect this is due to a database access issue, try starting the database before the domain
 
 ```
 docker-compose up -d db
 docker-compose up -d domain
+```
+
+To see the health of the WebLogic admin server run this:
+
+```
+docker inspect --format "{{json .State.Health }}"  oracle_soa_domain_1
 ```
