@@ -68,7 +68,11 @@ If the image pull is failing with `Error: image not found.` this could be becau
 
 ### Database is failing to start
 
-Make sure you have enough memory assigned to your docker engine. By default Docker doesn't typically use all of the system's memory and the Oracle database can be a bit of a memory hog.
+Make sure you have enough memory assigned to your docker engine. By default Docker doesn't typically use all of the system's memory and the Oracle database can be a bit of a memory hog. You can also check the health of the database by running the following:
+
+```
+docker inspect --format "{{json .State.Health }}"  oracle_soa_db_1
+```
 
 ### WebLogic domain is failing to boot due to a database issue
 
