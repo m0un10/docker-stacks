@@ -29,9 +29,8 @@ services:
       - ADMIN_PASSWORD=Welcome1
       - DOMAIN_NAME=dev_soainfra
       - DOMAIN_TYPE=soa
-      - ADMIN_HOST=domain
     healthcheck:
-      test: "curl --silent --fail domain:7001/console || exit 1"
+      test: "curl --silent --fail 0.0.0.0:7001/console || exit 1"
       interval: 1m
       retries: 30
       start_period: 120s
