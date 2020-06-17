@@ -34,7 +34,11 @@ If you want to add another unique domain reusing the same database (for resource
 2. Update the name from `domain` to something unique like `<env>_domain`
 3. Change the port mappings so they don't conflict with the other domain (e.g. use `8001 and 8002` instead)
 4. Update the `RCUPREFIX` value to be different to the one used by the other domain.
-5. Optionally, you may wish to change the `DOMAIN_NAME` to be unique but that's not strictly necessary. Every other variable can remain the same. Below is an example of a second domain, if you're feeling lazy just copy and paste that as it already has the changes as described in the previous 5 steps
+5. Change the `DOMAIN_NAME` to be unique for the stack (or alternatively, make sure the `/u01/oracle/user_projects` path is not shared to prevent a domain name clash)
+
+Every other variable can remain the same.
+
+Below is an example of a second domain, if you're feeling lazy just copy and paste that as it already has the changes as described in the previous 5 steps
 
 ```
 test_domain:
