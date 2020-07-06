@@ -42,8 +42,8 @@ The following persistent files/folders will be created on the first boot in the 
 
 | Host path | Container guest path | Description |
 | --------- | -------------------- | ----------- |
-| `state/domains/<DOMAIN_NAME>` | /u01/oracle/user_projects/domains/<DOMAIN_NAME> | The WebLogic domain home where all configuration resides |
-| `state/container/<DOMAIN_NAME>` | | State directory for indicating if RCU and the domain configuration have completed (to prevent it running again when it is unneeded) |
+| `state/domains/<DOMAIN_NAME>` | `/u01/oracle/user_projects/domains/<DOMAIN_NAME>` | The WebLogic domain home where  configuration and logs resides |
+| `state/container/<DOMAIN_NAME>` | `/u01/oracle/user_projects/container/<DOMAIN_NAME>` | State directory for indicating if RCU and the domain configuration have completed (to prevent it running again when it is unneeded) |
 
 ## Starting the stack
 
