@@ -16,9 +16,34 @@ docker pull container-registry.oracle.com/middleware/soasuite:12.2.1.3-200418
 docker pull container-registry.oracle.com/database/enterprise:12.2.0.1
 ```
 
-## Constraints
+## Anatomy of the Docker Compose stack
 
-Due to the way WebLogic stores the real IP addresses rather than the hostname for binding, it is not advisable to destroy containers or make changes that would result in a change to the container IP. In this case, you may not be able to start your container anymore and the only way to fix this is to delete the `state` directory so that it recreates the domain again to honour the new IP address. This is really stupid but it's a limitation (at the time of writing) for the official WebLogic container image bootstrapping process not Docker itself.
+The [docker-compose.yml](docker-compose.yml) consists of an Oracle database and a WebLogic domain running on two separate containers. The Oracle database is installed and configured on first boot so could take some time to start up for the first time. This is also the case for the WebLogic domain. Once the database is up and available, it will run the WebLogic domain configuration steps to create a domain and seed database users required. For subsequent starts, it will see that the database users and domain exist (as per the persistent data in the volumes) and continue to the start steps without doing any unneeded configuration on-boot.
+
+The configuration parameters are provided as environment variables.
+
+| Variable | Container | Description |
+| -------- | --------- | ----------- |
+| `DB_SID` | `db` | The database sid to be used / created on first boot |
+| `DB_PDB` | `db` | The pluggable database to be used / created on first boot |
+| `DB_BUNDLE` | `db` | This can be left as `basic` for most use-cases |
+| `DB_DOMAIN` | `db` | The database domain which will be used for connectivity from the WebLogic instance |
+| CONNECTION_STRING | `domain` | The connect string for the database. i.e. `db:1521/<DB_PDB>.<DB_DOMAIN> |
+| RCUPREFIX | `domain` | The prefix to be used for all of the schemas when the repository creation utility (RCU) is run on the first boot |
+| DB_PASSWORD | `domain` | The system database password. The default is Oradoc_db1 |
+| DB_SCHEMA_PASSWORD | `domain` | The password to be used for the schemas |
+| ADMIN_PASSWORD | `domain` | The name of the domain to be used / created on first boot |
+| DOMAIN_NAME | `domain` | The name of the domain to be used / created on first boot |
+| DOMAIN_TYPE | `domain` | The type of domain to create - `soa` or `osb` |
+
+**WARNING:** Some instructions indicate that the `ADMIN_HOST` should be set but this is not recommended due to the way WebLogic stores the real IP addresses rather than the hostname for binding when this is set. If you decide to set `ADMIN_HOST` (e.g. `ADMIN_HOST=localhost`) then it is not advisable to destroy containers or make changes that would result in a change to the container IP. In this case, you may not be able to start your container anymore and the only way to fix this is to delete the `state` directory so that it recreates the domain again to honour the new IP address. The setting on the `ADMIN_HOST` is generally only relevant for non-containerised workloads.
+
+The following persistent files/folders will be created on the first boot in the data volume.
+
+| Host path | Container guest path | Description |
+| --------- | -------------------- | ----------- |
+| `state/domains/<DOMAIN_NAME>` | /u01/oracle/user_projects/domains/<DOMAIN_NAME> | The WebLogic domain home where all configuration resides |
+| `state/container/<DOMAIN_NAME>` | | State directory for indicating if RCU and the domain configuration have completed (to prevent it running again when it is unneeded) |
 
 ## Starting the stack
 
@@ -54,7 +79,6 @@ test_domain:
     - ADMIN_PASSWORD=Welcome1
     - DOMAIN_NAME=test_soainfra
     - DOMAIN_TYPE=soa
-    - ADMIN_HOST=localhost
   healthcheck:
     test: "curl --silent --fail localhost:7001/console || exit 1"
   depends_on:
