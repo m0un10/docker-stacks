@@ -28,13 +28,13 @@ The configuration parameters are provided as environment variables.
 | `DB_PDB` | `db` | The pluggable database to be used / created on first boot |
 | `DB_BUNDLE` | `db` | This can be left as `basic` for most use-cases |
 | `DB_DOMAIN` | `db` | The database domain which will be used for connectivity from the WebLogic instance |
-| CONNECTION_STRING | `domain` | The connect string for the database. i.e. `db:1521/<DB_PDB>.<DB_DOMAIN> |
-| RCUPREFIX | `domain` | The prefix to be used for all of the schemas when the repository creation utility (RCU) is run on the first boot |
-| DB_PASSWORD | `domain` | The system database password. The default is Oradoc_db1 |
-| DB_SCHEMA_PASSWORD | `domain` | The password to be used for the schemas |
-| ADMIN_PASSWORD | `domain` | The name of the domain to be used / created on first boot |
-| DOMAIN_NAME | `domain` | The name of the domain to be used / created on first boot |
-| DOMAIN_TYPE | `domain` | The type of domain to create - `soa` or `osb` |
+| `CONNECTION_STRING` | `domain` | The connect string for the database. i.e. `db:1521/<DB_PDB>.<DB_DOMAIN> |
+| `RCUPREFIX` | `domain` | The prefix to be used for all of the schemas when the repository creation utility (RCU) is run on the first boot |
+| `DB_PASSWORD` | `domain` | The system database password. The default is Oradoc_db1 |
+| `DB_SCHEMA_PASSWORD` | `domain` | The password to be used for the schemas |
+| `ADMIN_PASSWORD` | `domain` | The name of the domain to be used / created on first boot |
+| `DOMAIN_NAME` | `domain` | The name of the domain to be used / created on first boot |
+| `DOMAIN_TYPE` | `domain` | The type of domain to create - `soa` or `osb` |
 
 **WARNING:** Some instructions indicate that the `ADMIN_HOST` should be set but this is not recommended due to the way WebLogic stores the real IP addresses rather than the hostname for binding when this is set. If you decide to set `ADMIN_HOST` (e.g. `ADMIN_HOST=localhost`) then it is not advisable to destroy containers or make changes that would result in a change to the container IP. In this case, you may not be able to start your container anymore and the only way to fix this is to delete the `state` directory so that it recreates the domain again to honour the new IP address. The setting on the `ADMIN_HOST` is generally only relevant for non-containerised workloads.
 
