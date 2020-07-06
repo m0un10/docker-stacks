@@ -28,9 +28,9 @@ The configuration parameters are provided as environment variables.
 | `DB_PDB` | `db` | The pluggable database to be used / created on first boot |
 | `DB_BUNDLE` | `db` | This can be left as `basic` for most use-cases |
 | `DB_DOMAIN` | `db` | The database domain which will be used for connectivity from the WebLogic instance |
-| `CONNECTION_STRING` | `domain` | The connect string for the database. i.e. `db:1521/<DB_PDB>.<DB_DOMAIN> |
+| `CONNECTION_STRING` | `domain` | The connect string for the database. i.e. `db:1521/<DB_PDB>.<DB_DOMAIN>`` |
 | `RCUPREFIX` | `domain` | The prefix to be used for all of the schemas when the repository creation utility (RCU) is run on the first boot |
-| `DB_PASSWORD` | `domain` | The system database password. The default is Oradoc_db1 |
+| `DB_PASSWORD` | `domain` | The system database password. The default is `Oradoc_db1` |
 | `DB_SCHEMA_PASSWORD` | `domain` | The password to be used for the schemas |
 | `ADMIN_PASSWORD` | `domain` | The name of the domain to be used / created on first boot |
 | `DOMAIN_NAME` | `domain` | The name of the domain to be used / created on first boot |
