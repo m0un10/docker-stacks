@@ -1,0 +1,7 @@
+version: '2.1'
+services:
+  app:
+    image: osixia/openldap:1.4.0
+    ports:
+      - 389:389
+      - 636:636
