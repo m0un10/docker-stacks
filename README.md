@@ -45,7 +45,7 @@ Fungible stacks with volumes will be stateful even after `docker-compose rm` is 
 
 ## Fixed stacks
 
-Fixed stacks are not designed to be fungible. They contain a bind mount which stores the state on the local file system in a `state` directory and maps to a fixed port number. The only way to wipe the state for fixed stacks is to remove the directory. The `.gitignore` file ensures that the state does not get committed to this repository for any stack. The state should be backed up elsewhere outside this repository.
+Fixed stacks are not designed to be fungible. They have ports that are mapped to fixed numbers (rather than being auto-assigned like with a fungible stack). They also typically contain a volume or a bind mount which stores the state on the local file system in a `state` directory. The only way to wipe the state for fixed stacks is to remove the directory (or delete the volume in a case where there is no bind mount). The `.gitignore` file ensures that the state does not get committed to this repository for any stack. The state should be backed up elsewhere outside this repository.
 
 ## Complex stacks
 
