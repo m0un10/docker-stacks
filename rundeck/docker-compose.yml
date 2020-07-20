@@ -1,0 +1,12 @@
+version: '2.1'
+services:
+  app:
+    image: rundeck/rundeck:3.3.0
+    ports:
+      - 4440
+    volumes:
+      - state:/home/rundeck/server/data
+    healthcheck:
+      test: "curl --silent --fail localhost:4440/user/login || exit 1"
+volumes:
+  state:
