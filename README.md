@@ -16,7 +16,7 @@ This repository containers three flavours of stacks
 | [Jenkins](jenkins) | fungible | `cd jenkins && docker-compose up -d`       | `open http://$(docker-compose port app 8080)` |
 | [OpenLDAP](openldap) | fixed | `cd openldap && docker-compose up -d` | `docker exec openldap_app_1 ldapsearch -x -H ldap://localhost -b dc=example,dc=org -D "cn=admin,dc=example,dc=org" -w admin` |
 | [Oracle SOA](oracle_soa) | complex  | [Perform prerequisites](oracle_soa/README.md) then `cd oracle_soa && docker-compose up -d`  | `open http://localhost:7001/console` |
-| [Rundeck](rundeck) | fungible | `cd rundeck && docker-compose up -d` |  `open http://$(docker-compose port app 4440)` |
+| [Rundeck](rundeck) | fixed | `cd rundeck && docker-compose up -d` |  `open http://127.0.0.1:4440` |
 
 ## Fungible stacks
 

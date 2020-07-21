@@ -3,10 +3,10 @@ services:
   app:
     image: rundeck/rundeck:3.3.0
     ports:
-      - 4440
+      - 4440:4440
     volumes:
-      - state:/home/rundeck/server/data
+      - ./state:/home/rundeck/server/data
     healthcheck:
       test: "curl --silent --fail localhost:4440/user/login || exit 1"
-volumes:
-  state:
+    environment:
+      - RUNDECK_GRAILS_URL=http://127.0.0.1:4440
