@@ -1,0 +1,8 @@
+# Full list of options documented at https://docs.docker.com/registry/configuration/
+version: 0.1
+storage:
+    filesystem:
+      rootdirectory: /var/lib/registry
+      maxthreads: 100
+proxy:
+  remoteurl: https://registry-1.docker.io

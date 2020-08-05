@@ -6,4 +6,5 @@ services:
       - 5000:5000
     volumes:
       - ./state:/var/lib/registry
+      - ./config.yml:/etc/docker/registry/config.yml
     restart: unless-stopped  
