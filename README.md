@@ -13,6 +13,7 @@ This repository containers three flavours of stacks
 | Stack                    | Flavour  | Up Command                                 | Launch UI / Test Command     |
 | -------------------------| -------- | ------------------------------------------ | ---------------------------- |
 | [Confluence](confluence) | fixed    | `cd confluence && docker-compose up -d`    | `open http://localhost:8090` |
+| [Docker Registry](docker_registry) | fixed | `cd docker_registry && docker-compose up -d`    | `open http://localhost:5000/v2/_catalog` |
 | [Jenkins](jenkins) | fungible | `cd jenkins && docker-compose up -d`       | `open http://$(docker-compose port app 8080)` |
 | [OpenLDAP](openldap) | fixed | `cd openldap && docker-compose up -d` | `docker exec openldap_app_1 ldapsearch -x -H ldap://localhost -b dc=example,dc=org -D "cn=admin,dc=example,dc=org" -w admin` |
 | [Oracle SOA](oracle_soa) | complex  | [Perform prerequisites](oracle_soa/README.md) then `cd oracle_soa && docker-compose up -d`  | `open http://localhost:7001/console` |

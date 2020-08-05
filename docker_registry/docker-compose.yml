@@ -1,0 +1,9 @@
+version: '2.1'
+services:
+  app:
+    image: registry:2
+    ports:
+      - 5000:5000
+    volumes:
+      - ./state:/var/lib/registry
+    restart: unless-stopped  
