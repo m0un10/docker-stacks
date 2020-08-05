@@ -6,7 +6,7 @@ This repository containers three flavours of stacks
 
 * **Fungible** stacks can easily support multiple stack instances co-existing on a single machine.
 * **Fixed** stacks are singletons on a given machine and contain considerable state and a bind mount to the local file system.
-* **Complex** stacks are for apps which require a bit more effort than a `docker-compose up` to get started due to their inherent complexity
+* **Complex** stacks are for apps which require a bit more effort than a `docker-compose up` to get started due to their inherent complexity. For these stacks it's best to consult their individual README file before trying to use them.
 
 ## Catalog
 
