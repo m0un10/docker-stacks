@@ -1,0 +1,21 @@
+version: '2.1'
+services:
+    api:
+        image: 'bitnami/etcd:latest'
+        hostname: etcd-server
+        ports:
+         - '2379'
+         - '2380'
+        environment:
+         - ETCD_ADVERTISE_CLIENT_URLS=http://etcd-server:2379
+         - ALLOW_NONE_AUTHENTICATION=yes
+         - ETCD_ENABLE_V2=true
+    browser:
+        image: buddho/etcd-browser
+        ports:
+         - '8000'
+        links:
+         - api:etcd-server    
+        environment:
+         - ETCD_HOST=etcd-server
+         - ETCD_PORT=2379
