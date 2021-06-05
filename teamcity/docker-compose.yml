@@ -1,0 +1,18 @@
+version: '3.3'
+services:
+    teamcity-server:
+        container_name: teamcity-server-instance
+        environment:
+            - 'TEAMCITY_SERVER_MEM_OPTS=-Xmx2g -XX:MaxPermSize=270m -XX:ReservedCodeCacheSize=350m'
+        volumes:
+            - './state/datadir:/data/teamcity_server/datadir'
+            - './state/logs:/opt/teamcity/logs'
+        ports:
+            - '8111:8111'
+        image: jetbrains/teamcity-server:${TEAMCITY_VERSION:-latest}
+    teamcity-agent:
+        environment:
+            - 'SERVER_URL=teamcity-server-instance'
+        volumes:
+            - './state/agent/conf:/data/teamcity_agent/conf'
+        image: jetbrains/teamcity-agent
