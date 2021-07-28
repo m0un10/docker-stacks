@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+    proxy:
+        image: nginx
+        volumes:
+        - ./nginx.conf:/etc/nginx/nginx.conf:ro
+        command: [nginx-debug, '-g', 'daemon off;']
+        ports:
+        - '80'
+        depends_on:
+        - service
+    service:
+        image: httpd
+        volumes:
+        - ./static:/usr/local/apache2/htdocs/
+        ports:
+        - '80'
