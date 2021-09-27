@@ -17,6 +17,7 @@ This repository containers three flavours of stacks
 | [etcd + etcd-browser](etcd) | fungible | `cd etcd && docker-compose up -d`  | `open http://$(docker-compose port browser 8000)` |
 | [Hapi FHIR Server](hapi_fhir) | fungible | `cd hapi_fhir && docker-compose up -d` | `open http://$(docker-compose port app 8080)` |
 | [Jenkins](jenkins) | fungible | `cd jenkins && docker-compose up -d`       | `open http://$(docker-compose port app 8080)` |
+| [Kafka](kafka) | fixed | `cd kafka && docker-compose up -d` | `open http://localhost:9021` |
 | [OpenLDAP](openldap) | fixed | `cd openldap && docker-compose up -d` | `docker exec openldap_app_1 ldapsearch -x -H ldap://localhost -b dc=example,dc=org -D "cn=admin,dc=example,dc=org" -w admin` |
 | [nginx](nginx) | fungible | `cd nginx && docker-compose up -d` | `open http://$(docker-compose port proxy 80)` |
 | [Oracle SOA](oracle_soa) | complex  | [Perform prerequisites](oracle_soa/README.md) then `cd oracle_soa && docker-compose up -d`  | `open http://localhost:7001/console` |
