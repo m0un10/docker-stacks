@@ -14,7 +14,7 @@ This repository containers three flavours of stacks
 | -------------------------| -------- | ------------------------------------------ | ---------------------------- |
 | [Confluence](confluence) | fixed    | `cd confluence && docker-compose up -d`    | `open http://localhost:8090` |
 | [Docker Registry](docker_registry) | fixed | `cd docker_registry && docker-compose up -d`    | `open http://localhost:5000/v2/_catalog` |
-| [etcd + etcd-browser](etcd) | fungible | `cd etcd && docker-compose up -d`  | `open http://$(docker-compose port browser 8000)` |
+| [etcd + etcd-browser](etcd) | fungible | `cd etcd && docker-compose up -d`  | `open http://$(docker-compose port browser 8000) && ETCDCTL_API=2 etcdctl ls / --endpoints http://$(docker-compose port api 2379),http://$(docker-compose port api 2380)` |
 | [Hapi FHIR Server](hapi_fhir) | fungible | `cd hapi_fhir && docker-compose up -d` | `open http://$(docker-compose port app 8080)` |
 | [Jenkins](jenkins) | fungible | `cd jenkins && docker-compose up -d`       | `open http://$(docker-compose port app 8080)` |
 | [Kafka](kafka) | fixed | `cd kafka && docker-compose up -d` | `open http://localhost:9021` |
@@ -23,6 +23,7 @@ This repository containers three flavours of stacks
 | [Oracle SOA](oracle_soa) | complex  | [Perform prerequisites](oracle_soa/README.md) then `cd oracle_soa && docker-compose up -d`  | `open http://localhost:7001/console` |
 | [Rundeck](rundeck) | fixed | `cd rundeck && docker-compose up -d` |  `open http://localhost:4440` |
 | [TeamCity](teamcity) | fixed | `cd teamcity && docker-compose up -d` |  `open http://localhost:8111` |
+| [Wordpress](wordpress) | fixed | `cd wordpress && docker-compose up -d` | `open http://localhost:8000` |
 
 ## Fungible stacks
 
