@@ -22,6 +22,7 @@ This repository containers three flavours of stacks
 | [nginx](nginx) | fungible | `cd nginx && docker-compose up -d` | `open http://$(docker-compose port proxy 80)` |
 | [Oracle SOA](oracle_soa) | complex  | [Perform prerequisites](oracle_soa/README.md) then `cd oracle_soa && docker-compose up -d`  | `open http://localhost:7001/console` |
 | [Rundeck](rundeck) | fixed | `cd rundeck && docker-compose up -d` |  `open http://localhost:4440` |
+| [Structurizr](structurizr) | fungible | `cd structurizr && docker-compose up -d` |  `open http://$(docker-compose port app 8080)` |
 | [TeamCity](teamcity) | fixed | `cd teamcity && docker-compose up -d` |  `open http://localhost:8111` |
 | [Wordpress](wordpress) | fixed | `cd wordpress && docker-compose up -d` | `open http://localhost:8000` |
 

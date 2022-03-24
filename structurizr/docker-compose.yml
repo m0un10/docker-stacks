@@ -1,0 +1,8 @@
+version: '2.1'
+services:
+    app:
+        image: structurizr/lite
+        ports:
+         - '8080'
+        volumes:
+        - ./examples:/usr/local/structurizr
