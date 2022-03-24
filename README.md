@@ -17,9 +17,12 @@ This repository containers three flavours of stacks
 | [etcd + etcd-browser](etcd) | fungible | `cd etcd && docker-compose up -d`  | `open http://$(docker-compose port browser 8000) && ETCDCTL_API=2 etcdctl ls / --endpoints http://$(docker-compose port api 2379),http://$(docker-compose port api 2380)` |
 | [Hapi FHIR Server](hapi_fhir) | fungible | `cd hapi_fhir && docker-compose up -d` | `open http://$(docker-compose port app 8080)` |
 | [Jenkins](jenkins) | fungible | `cd jenkins && docker-compose up -d`       | `open http://$(docker-compose port app 8080)` |
+| [Kafka](kafka) | fixed | `cd kafka && docker-compose up -d` | `open http://localhost:9021` |
 | [OpenLDAP](openldap) | fixed | `cd openldap && docker-compose up -d` | `docker exec openldap_app_1 ldapsearch -x -H ldap://localhost -b dc=example,dc=org -D "cn=admin,dc=example,dc=org" -w admin` |
+| [nginx](nginx) | fungible | `cd nginx && docker-compose up -d` | `open http://$(docker-compose port proxy 80)` |
 | [Oracle SOA](oracle_soa) | complex  | [Perform prerequisites](oracle_soa/README.md) then `cd oracle_soa && docker-compose up -d`  | `open http://localhost:7001/console` |
 | [Rundeck](rundeck) | fixed | `cd rundeck && docker-compose up -d` |  `open http://localhost:4440` |
+| [TeamCity](teamcity) | fixed | `cd teamcity && docker-compose up -d` |  `open http://localhost:8111` |
 | [Wordpress](wordpress) | fixed | `cd wordpress && docker-compose up -d` | `open http://localhost:8000` |
 
 ## Fungible stacks
