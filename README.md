@@ -12,6 +12,7 @@ This repository containers three flavours of stacks
 
 | Stack                    | Flavour  | Up Command                                 | Launch UI / Test Command     |
 | -------------------------| -------- | ------------------------------------------ | ---------------------------- |
+| [Apache Airflow](airflow) | complex  | [Perform prerequisites](https://airflow.apache.org/docs/apache-airflow/stable/start/docker.html) then `cd airflow && docker-compose up -d`. On the first run it may take a while to boot up. | `open http://localhost:8080` |
 | [Confluence](confluence) | fixed    | `cd confluence && docker-compose up -d`    | `open http://localhost:8090` |
 | [Docker Registry](docker_registry) | fixed | `cd docker_registry && docker-compose up -d`    | `open http://localhost:5000/v2/_catalog` |
 | [etcd + etcd-browser](etcd) | fungible | `cd etcd && docker-compose up -d`  | `open http://$(docker-compose port browser 8000) && ETCDCTL_API=2 etcdctl ls / --endpoints http://$(docker-compose port api 2379),http://$(docker-compose port api 2380)` |
