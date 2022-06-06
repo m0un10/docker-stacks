@@ -1,0 +1,9 @@
+services:
+  app:
+    image: mailhog/mailhog
+    logging:
+      # MailHog’s logs are quite chatty, this will turn them off if you don’t need them.
+      driver: 'none'  # disable saving logs
+    ports:
+      - 1025:1025 # smtp server
+      - 8025:8025 # web ui
