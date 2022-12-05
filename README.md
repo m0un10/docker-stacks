@@ -24,7 +24,8 @@ This repository containers three flavours of stacks
 | [Microsoft SQL Service](mssql) | fixed | `cd mssql && docker-compose up -d` | `docker exec -it mssql_db_1 /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "Pass@word"` |
 | [nginx](nginx) | fungible | `cd nginx && docker-compose up -d` | `open http://$(docker-compose port proxy 80)` |
 | [OpenLDAP](openldap) | fixed | `cd openldap && docker-compose up -d` | `docker exec openldap_app_1 ldapsearch -x -H ldap://localhost -b dc=example,dc=org -D "cn=admin,dc=example,dc=org" -w admin` |
-| [Oracle SOA](oracle_soa) | complex  | [Perform prerequisites](oracle_soa/README.md) then `cd oracle_soa && docker-compose up -d`  | `open http://localhost:7001/console` |
+| [Oracle SOA](oracle_soa) | complex  | [Perform prerequisites](oracle_soa/README.md) then `cd oracle_soa && docker-compose up -d` | `open http://localhost:7001/console` |
+| [Postgres](postgres) | fixed | `cd postgres && docker-compose up -d` | `open http://localhost:8080` |
 | [Portainer](portainer) | fungible | `cd portainer && docker-compose up -d` | `open http://$(docker-compose port app 9000)` |
 | [Rundeck](rundeck) | fixed | `cd rundeck && docker-compose up -d` |  `open http://localhost:4440` |
 | [Structurizr](structurizr) | fungible | `cd structurizr && docker-compose up -d` |  `open http://$(docker-compose port app 8080)` |
