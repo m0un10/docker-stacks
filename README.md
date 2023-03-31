@@ -16,6 +16,7 @@ This repository containers three flavours of stacks
 | [Confluence](confluence) | fixed    | `cd confluence && docker-compose up -d`    | `open http://localhost:8090` |
 | [Docker Registry](docker_registry) | fixed | `cd docker_registry && docker-compose up -d`    | `open http://localhost:5000/v2/_catalog` |
 | [etcd + etcd-browser](etcd) | fungible | `cd etcd && docker-compose up -d`  | `open http://$(docker-compose port browser 8000) && ETCDCTL_API=2 etcdctl ls / --endpoints http://$(docker-compose port api 2379),http://$(docker-compose port api 2380)` |
+| [gRPC client/server w/ node](grpc) | fixed | `cd grpc && docker-compose up server -d` | `docker-compose up client` |
 | [Firebase Realtime Database](firebase_rtdb) | fixed | `cd firebase_rtdb && docker-compose up -d` | `open http://$(docker-compose port db 4000)` |
 | [Hapi FHIR Server](hapi_fhir) | fungible | `cd hapi_fhir && docker-compose up -d` | `open http://$(docker-compose port app 8080)` |
 | [Jenkins](jenkins) | fungible | `cd jenkins && docker-compose up -d` | `open http://$(docker-compose port app 8080)` |

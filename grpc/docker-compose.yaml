@@ -1,0 +1,19 @@
+version: '3.9'
+services:
+  server:
+    build: .
+    command: ["node", "server.js"]
+    ports:
+      - "50051:50051"
+    # networks:
+    #   - mynet
+
+  client:
+    build: .
+    command: ["node", "client.js"]
+#     networks:
+#       - mynet
+
+# networks:
+#   mynet:
+#     driver: bridge
