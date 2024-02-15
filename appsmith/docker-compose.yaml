@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  appsmith:
+    image: index.docker.io/appsmith/appsmith-ee
+    ports:
+      - "80:80"
+      - "443:443"
+    #environment:
+      #Use this to restrict signup to specific domains
+      #APPSMITH_SIGNUP_ALLOWED_DOMAINS: example.com
+      #Use this to indicate the users you want to be assigned admin
+      #APPSMITH_ADMIN_EMAILS: admin@example.com
+    volumes:
+      - ./stacks:/appsmith-stacks
