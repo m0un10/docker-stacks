@@ -25,6 +25,7 @@ This repository containers three flavours of stacks
 | [MailHog](mailhog) | fixed | `cd mailhog && docker-compose up -d` | `curl "smtp://localhost:1025" --mail-from 'from@foo.com' --mail-rcpt 'to@bar.com' -T <(echo -e 'Subject: Hello\n\nWorld!') && open http://$(docker-compose port app 8025)` |
 | [Microsoft SQL Service](mssql) | fixed | `cd mssql && docker-compose up -d` | `docker exec -it mssql_db_1 /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "Pass@word"` |
 | [nginx](nginx) | fungible | `cd nginx && docker-compose up -d` | `open http://$(docker-compose port proxy 80)` |
+| [Neo4j](neo4j) | fixed | `cd neo4j && docker-compose up -d` | `curl http://localhost:7474` |
 | [OpenLDAP](openldap) | fixed | `cd openldap && docker-compose up -d` | `docker exec openldap_app_1 ldapsearch -x -H ldap://localhost -b dc=example,dc=org -D "cn=admin,dc=example,dc=org" -w admin` |
 | [Oracle SOA](oracle_soa) | complex  | [Perform prerequisites](oracle_soa/README.md) then `cd oracle_soa && docker-compose up -d` | `open http://localhost:7001/console` |
 | [Postgres](postgres) | fixed | `cd postgres && docker-compose up -d` | `open http://localhost:8080` |
